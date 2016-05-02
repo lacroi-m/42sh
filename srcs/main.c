@@ -5,12 +5,32 @@
 ** Login   <meridj_m@meridj_m@epitech.eu>
 **
 ** Started on  Sun Apr 10 15:28:55 2016 Mehdi Meridja
-** Last update Wed Apr 13 10:33:38 2016 Mehdi
+** Last update Mon May  2 13:00:04 2016 virgile junique
 */
 
-int	main(int ac, char **av)
+void	my_loop(t_env *p)
 {
+  char	*str;
+
+  str = NULL;
+  while ((str = get_next_line(0)))
+    {
+      my_parser(p, str);
+      my_exec(p);
+      free(str);
+      write(1, "$>", 2);
+    }
+}
+
+
+int	main(int ac, char **av, char **env)
+{
+  t_env	p;
+
   (void)ac;
   (void)av;
+  my_init();
+  my_env();
+  my_loop(&p);
   return (0);
 }
