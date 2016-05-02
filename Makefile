@@ -1,34 +1,44 @@
 ##
-## Makefile for all in /home/meridj/Rendu/minishell1/
+## Makefile for Makefile in /home/juniqu_v/rendu/PSU_2015_42sh
+## 
+## Made by virgile junique
+## Login   <juniqu_v@epitech.net>
+## 
+## Started on  Mon May  2 12:27:35 2016 virgile junique
+## Last update Mon May  2 12:35:11 2016 virgile junique
 ##
-## Made by John Doe
-## Login   <login_x@epitech.eu>
-##
-## Started on  Sun Apr 10 15:24:10 2016 John Doe
-## Last update Wed Apr 13 17:37:00 2016 Mehdi
-##
+
+CC	= cc
+
+RM	= rm -f
 
 NAME	= 42sh
 
-CFLAGS	= -Wall -Wextra -W -I./inc/
+CFLAGS	+= -W -Wall -Werror -Wextra -I./include/
 
-LIB     = -L./lib/ -lmy
+LIB     = -lmy -L./lib/
 
-SRC	= srcs/main.c \
+SRC	= $(addprefix srcs/, \
+	    main.c)
 
 OBJ	= $(SRC:.c=.o)
 
-all:	$(NAME)
+M_LIB	= make -C lib/my
 
-$(NAME):$(OBJ)
-	$(CC) $(OBJ) -o $(NAME) $(LIB)
+all:	 $(NAME)
+
+$(NAME): $(OBJ)
+	 $(M_LIB)
+	 $(CC) $(OBJ) $(LIB) -o $(NAME)
 
 clean:
-	rm -f $(OBJ)
+	 $(M_LIB) clean
+	 $(RM) $(OBJ)
 
-fclean:	clean
-	rm -f $(NAME)
+fclean:	 clean
+	 $(M_LIB) fclean
+	 $(RM) $(NAME)
 
-re:	fclean all
+re: fclean all
 
 .PHONY:	all clean fclean re
