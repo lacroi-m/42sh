@@ -5,8 +5,10 @@
 ** Login   <meridj_m@meridj_m@epitech.eu>
 **
 ** Started on  Sun Apr 10 15:28:55 2016 Mehdi Meridja
-** Last update Mon May  2 13:00:04 2016 virgile junique
+** Last update Mon May  2 13:02:27 2016 virgile junique
 */
+
+#include "42sh.h"
 
 void	my_loop(t_env *p)
 {
@@ -21,7 +23,6 @@ void	my_loop(t_env *p)
       write(1, "$>", 2);
     }
 }
-
 
 int	main(int ac, char **av, char **env)
 {
