@@ -5,7 +5,7 @@
 ** Login   <da-sil_t@epitech.net>
 ** 
 ** Started on  Fri Jan 22 16:52:21 2016 theo da-silva
-** Last update Fri Jan 22 20:16:45 2016 theo da-silva
+** Last update Mon May  2 16:29:22 2016 theo da-silva
 */
 
 #include <stdlib.h>
@@ -54,7 +54,7 @@ char	**my_str_to_wordtab(char *str)
   int   i;
   int   u;
   int   j;
-  
+
   i = 0;
   u = 0;
   j = 0;
