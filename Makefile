@@ -5,7 +5,7 @@
 ## Login   <juniqu_v@epitech.net>
 ## 
 ## Started on  Mon May  2 12:27:35 2016 virgile junique
-## Last update Mon May  2 12:35:11 2016 virgile junique
+## Last update Mon May  9 10:25:46 2016 Mehdi
 ##
 
 CC	= cc
@@ -19,7 +19,8 @@ CFLAGS	+= -W -Wall -Werror -Wextra -I./include/
 LIB     = -lmy -L./lib/
 
 SRC	= $(addprefix srcs/, \
-	    main.c)
+	    main.c \
+	    echo.c)
 
 OBJ	= $(SRC:.c=.o)
 
