@@ -5,7 +5,7 @@
 ## Login   <juniqu_v@epitech.net>
 ## 
 ## Started on  Mon May  2 12:27:35 2016 virgile junique
-## Last update Mon May  9 10:25:46 2016 Mehdi
+## Last update Tue May 10 15:23:51 2016 virgile junique
 ##
 
 CC	= cc
@@ -20,6 +20,9 @@ LIB     = -lmy -L./lib/
 
 SRC	= $(addprefix srcs/, \
 	    main.c \
+	    my_env.c \
+	    my_list.c \
+	    my_exit.c \
 	    echo.c)
 
 OBJ	= $(SRC:.c=.o)

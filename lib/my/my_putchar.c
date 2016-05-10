@@ -5,12 +5,12 @@
 ** Login   <juniqu_v@epitech.net>
 ** 
 ** Started on  Mon May  2 11:26:25 2016 virgile junique
-** Last update Mon May  2 11:26:43 2016 virgile junique
+** Last update Mon May  9 15:58:42 2016 virgile junique
 */
 
 #include "my.h"
 
-void	my_putchar(char c)
+void	my_putchar(char c, int fd)
 {
-  write (1, &c, 1);
+  write (fd, &c, 1);
 }

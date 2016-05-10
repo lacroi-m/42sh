@@ -5,15 +5,15 @@
 ** Login   <da-sil_t@epitech.net>
 ** 
 ** Started on  Mon May  2 16:39:13 2016 theo da-silva
-** Last update Mon May  9 13:14:52 2016 theo da-silva
+** Last update Tue May 10 15:32:14 2016 virgile junique
 */
 
 #include "42sh.h"
-#include <unistd.h>
 
-void	my_exit(t_env *p, int value)
+void	my_exit(t_params *p, int value)
 {
-  my_free_2d(p->cmd);
-  my_free_env(???);
+  /*my_free_2d(p->cmd);*/
+  my_clear_list(&p->env); /* free_env */
+  free(p->prompt);
   exit(value % 255);
 }

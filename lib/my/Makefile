@@ -5,7 +5,7 @@
 ## Login   <juniqu_v@epitech.net>
 ## 
 ## Started on  Mon May  2 11:30:05 2016 virgile junique
-## Last update Mon May  9 10:24:32 2016 Mehdi
+## Last update Mon May  9 15:55:51 2016 virgile junique
 ##
 
 CC	= cc
@@ -15,6 +15,7 @@ RM	= rm -f
 NAME	= libmy.a
 
 SRCS	= my_putchar.c \
+	  xmalloc.c \
 	  my_strlen.c \
 	  my_putstr.c \
 	  my_strndup.c \

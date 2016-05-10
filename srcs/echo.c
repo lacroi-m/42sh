@@ -5,11 +5,8 @@
 ** Login   <meridj_m@meridj_m@epitech.eu>
 **
 ** Started on  Fri May  6 12:43:00 2016 Mehdi Meridja
-** Last update Mon May  9 10:20:22 2016 Mehdi Meridja
+** Last update Tue May 10 15:27:38 2016 virgile junique
 */
-
-#include <stdio.h>
-#include <string.h>
 
 #include "42sh.h"
 
