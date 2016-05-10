@@ -5,7 +5,7 @@
 ** Login   <juniqu_v@epitech.net>
 ** 
 ** Started on  Mon May  2 13:02:44 2016 virgile junique
-** Last update Tue May 10 15:44:31 2016 virgile junique
+** Last update Tue May 10 15:59:19 2016 theo da-silva
 */
 
 #ifndef _42SH_H_
@@ -30,5 +30,6 @@ typedef struct s_params
 
 void	my_loop(t_params *p);
 void	my_exit(t_params *p, int value);
+void	my_init(t_params *p);
 
 #endif /* !42SH_H_ */
