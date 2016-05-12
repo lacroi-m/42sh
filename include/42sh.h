@@ -5,7 +5,7 @@
 ** Login   <juniqu_v@epitech.net>
 ** 
 ** Started on  Mon May  2 13:02:44 2016 virgile junique
-** Last update Tue May 10 15:59:19 2016 theo da-silva
+** Last update Thu May 12 18:00:22 2016 virgile junique
 */
 
 #ifndef _42SH_H_
@@ -15,6 +15,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <signal.h>
+# include <stdarg.h>
 # include <string.h>
 # include <stdio.h>
 # include "get_next_line.h"
@@ -25,11 +26,15 @@ typedef struct s_params
 {
   t_env		*env;
   char		*prompt;
+  char		**path_tab;
+  char		**env_tab;
   /* struct parametre a faire bouge */
 }		t_params;
 
+void	my_load_env(t_params *p, char **envp);
 void	my_loop(t_params *p);
 void	my_exit(t_params *p, int value);
 void	my_init(t_params *p);
+void	my_free_tab(char **tab);
 
 #endif /* !42SH_H_ */

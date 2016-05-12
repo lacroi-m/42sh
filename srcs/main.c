@@ -5,7 +5,7 @@
 ** Login   <meridj_m@meridj_m@epitech.eu>
 **
 ** Started on  Sun Apr 10 15:28:55 2016 Mehdi Meridja
-** Last update Tue May 10 15:50:28 2016 virgile junique
+** Last update Thu May 12 18:17:40 2016 virgile junique
 */
 
 #include "42sh.h"
@@ -13,7 +13,6 @@
 
 void	my_loop(t_params *p)
 {
-  p->prompt = NULL;
   while ((p->prompt = get_next_line(0)))
     {
       /*  my_parser(p, str);
@@ -29,11 +28,11 @@ int		main(int ac, char **av, char **envp)
 
   (void)ac;
   (void)av;
-  write(1, "$>", 2);
+  my_init(&p);
   if (envp != NULL)
     {
       p.env = my_init_list();
-      my_load_env(p.env, envp);
+      my_load_env(&p, envp);
     }
   else
     p.env = my_init_list();

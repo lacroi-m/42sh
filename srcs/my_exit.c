@@ -5,14 +5,15 @@
 ** Login   <da-sil_t@epitech.net>
 ** 
 ** Started on  Mon May  2 16:39:13 2016 theo da-silva
-** Last update Tue May 10 15:32:14 2016 virgile junique
+** Last update Thu May 12 18:11:12 2016 virgile junique
 */
 
 #include "42sh.h"
 
 void	my_exit(t_params *p, int value)
 {
-  /*my_free_2d(p->cmd);*/
+  my_free_tab(p->path_tab); /*free tab path */
+  my_free_tab(p->env_tab);
   my_clear_list(&p->env); /* free_env */
   free(p->prompt);
   exit(value % 255);

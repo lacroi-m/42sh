@@ -5,7 +5,7 @@
 ## Login   <juniqu_v@epitech.net>
 ## 
 ## Started on  Mon May  2 11:30:05 2016 virgile junique
-## Last update Mon May  9 15:55:51 2016 virgile junique
+## Last update Tue May 10 17:02:15 2016 virgile junique
 ##
 
 CC	= cc
@@ -21,7 +21,8 @@ SRCS	= my_putchar.c \
 	  my_strndup.c \
 	  my_strncat.c \
 	  get_next_line.c \
-	  wordtab_custom.c
+	  wordtab_custom.c \
+	  path.c
 
 OBJS	= $(SRCS:.c=.o)
 
