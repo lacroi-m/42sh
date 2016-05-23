@@ -5,7 +5,7 @@
 ** Login   <da-sil_t@epitech.net>
 **
 ** Started on  Mon May 23 14:33:34 2016 theo da-silva
-** Last update Mon May 23 16:25:27 2016 theo da-silva
+** Last update Mon May 23 16:27:31 2016 theo da-silva
 */
 
 #include "42sh.h"
@@ -19,11 +19,12 @@ void	my_fill_builtins_name(char tab[6])
   tab[3] = my_strcpy("unsetenv");
   tab[4] = my_strcpy("env");
   tab[5] = my_strcpy("echo");
+  tab[6] = my_strcpy("history");
 }
 
 int	my_builtins(char *str, t_params *p, int pos)
 {
-  int	(*f[6])(char *str, t_params *p);
+  int	(*f[7])(char *str, t_params *p);
 
   f[0] = &my_chdir;
   f[1] = &my_setenv;
@@ -31,6 +32,7 @@ int	my_builtins(char *str, t_params *p, int pos)
   f[3] = &my_env;
   f[4] = &my_exit;
   f[5] = &my_echo;
+  f[6] = &my_history;
   r = f[pos](command, env);
   return (r);
 }
