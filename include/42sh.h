@@ -5,7 +5,7 @@
 ** Login   <juniqu_v@epitech.net>
 **
 ** Started on  Mon May  2 13:02:44 2016 virgile junique
-** Last update Mon May 23 09:14:50 2016 Lemeh
+** Last update Mon May 23 15:09:56 2016 theo da-silva
 */
 
 #ifndef _42SH_H_
@@ -36,7 +36,7 @@ void	my_exec(t_params *p);
 
 void	my_load_env(t_params *p, char **envp);
 void	my_loop(t_params *p);
-void	my_exit(t_params *p, int value);
+int	my_exit(char *str, t_params *p, int value);
 void	my_init(t_params *p);
 void	my_free_tab(char **tab);
 
