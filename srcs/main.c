@@ -5,7 +5,7 @@
 ** Login   <meridj_m@meridj_m@epitech.eu>
 **
 ** Started on  Sun Apr 10 15:28:55 2016 Mehdi Meridja
-** Last update Mon May 23 11:31:52 2016 Lemeh
+** Last update Mon May 23 15:17:08 2016 theo da-silva
 */
 
 #include "42sh.h"
@@ -43,6 +43,6 @@ int		main(int ac, char **av, char **envp)
   else
     p.env = my_init_list();
   my_loop(&p);
-  my_exit(&p, 1);
+  my_exit("exit", &p, 1);
   return (0);
 }
