@@ -5,7 +5,7 @@
 ** Login   <juniqu_v@epitech.net>
 **
 ** Started on  Mon May  2 12:21:16 2016 virgile junique
-** Last update Mon May 23 10:10:04 2016 Lemeh
+** Last update Mon May 23 15:52:35 2016 virgile junique
 */
 
 #ifndef _MY_H_
@@ -18,8 +18,8 @@
 
 void	count_word(char *str, int *nb);
 void	my_putchar(char c, int fd);
-void	my_putstr(char *str, int fd);
 void	*xmalloc(int size);
+int	my_putstr(char *str, int fd, int value);
 int	my_strlen(char *str);
 int	len_word(char *str, int num);
 char	*check_slash(char *str);

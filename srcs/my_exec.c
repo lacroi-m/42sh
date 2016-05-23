@@ -5,15 +5,11 @@
 ** Login   <meridj_m@epitech.net>
 **
 ** Started on  Mon May 23 09:12:46 2016 Lemeh
-** Last update Mon May 23 14:08:34 2016 Lemeh
+** Last update Mon May 23 16:11:11 2016 virgile junique
 */
 
-#include <sys/types.h>
-#include <sys/wait.h>
-#include <sys/types.h>
-#include <dirent.h>
-
 #include "42sh.h"
+#include "builtins.h"
 
 static int     my_fork_local(char **envp, char **command_tab)
 {
@@ -55,6 +51,9 @@ static int	my_access(char **command_tab, t_params *p)
   char		*command;
 
   i = -1;
+  if (p->path_tab != NULL)
+    my_free_tab(p->path_tab);
+  p->path_tab = my_pathway(p->env);
   while (p->path_tab[++i] != NULL)
     {
       command = my_strcat(p->path_tab[i], command_tab[0]);

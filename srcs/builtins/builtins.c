@@ -1,14 +1,15 @@
 /*
 ** builtins.c for my_builtins in /home/da-sil_t/rendu/Systeme_Unix/42sh/PSU_2015_42sh
-** 
+**
 ** Made by theo da-silva
 ** Login   <da-sil_t@epitech.net>
-** 
+**
 ** Started on  Mon May 23 14:33:34 2016 theo da-silva
-** Last update Mon May 23 15:02:20 2016 theo da-silva
+** Last update Mon May 23 16:05:19 2016 virgile junique
 */
 
 #include "42sh.h"
+#include "builtins.h"
 
 void	my_fill_builtins_name(char tab[6])
 {
@@ -18,10 +19,9 @@ void	my_fill_builtins_name(char tab[6])
   tab[3] = my_strcpy("unsetenv");
   tab[4] = my_strcpy("env");
   tab[5] = my_strcpy("echo");
-
 }
 
-int	my_builtins(t_params *p, int pos)
+int	my_builtins(char *str, t_params *p, int pos)
 {
   int	(*f[6])(char *str, t_params *p, int values);
 

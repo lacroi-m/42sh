@@ -1,11 +1,11 @@
 /*
 ** my_env.c for my_env in /home/juniqu_v/rendu/PSU_2015_42sh/srcs
-** 
+**
 ** Made by virgile junique
 ** Login   <juniqu_v@epitech.net>
-** 
+**
 ** Started on  Mon May  9 15:42:37 2016 virgile junique
-** Last update Thu May 12 18:14:31 2016 virgile junique
+** Last update Mon May 23 16:10:29 2016 virgile junique
 */
 
 #include "42sh.h"
@@ -54,7 +54,7 @@ char	**my_path_in_tab(char *str)
   int   k;
   int   nb;
   int   len;
-  
+
   i = 1;
   j = 4;
   count_word(str, &nb);
@@ -101,6 +101,6 @@ void	my_load_env(t_params *p, char **envp)
   i = -1;
   while(envp[++i] != '\0')
     my_add_elem(p->env, envp[i]);
-  p->path_tab = my_pathway(p->env);
+  p->path_tab = 0;
   p->env_tab = my_env_in_tab(p->env);
 }

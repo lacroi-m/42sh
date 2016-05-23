@@ -5,21 +5,11 @@
 ** Login   <meridj_m@meridj_m@epitech.eu>
 **
 ** Started on  Fri May  6 12:43:00 2016 Mehdi Meridja
-** Last update Mon May 23 14:02:07 2016 Lemeh
+** Last update Mon May 23 16:03:21 2016 virgile junique
 */
 
 #include "42sh.h"
-
-void	my_free_tab(char **message)
-{
-  int	i;
-
-  i = -1;
-  while (message[++i] != NULL)
-    free(message[i]);
-  free(message);
-  return ;
-}
+#include "builtins.h"
 
 static int	check_option(char **option)
 {
@@ -65,10 +55,12 @@ static void	no_backslash_n(char **message)
   return ;
 }
 
-void	my_echo(char *str)
+void	my_echo(char *str, t_params *p, int value)
 {
   char	**message;
 
+  (void)p;
+  (void)value;
   message = wordtab_custom(str);
   if ((check_option(message)) == 1)
     no_backslash_n(message);

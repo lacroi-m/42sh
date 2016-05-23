@@ -5,10 +5,11 @@
 ** Login   <da-sil_t@epitech.net>
 **
 ** Started on  Mon May  2 16:39:13 2016 theo da-silva
-** Last update Mon May 23 15:10:57 2016 theo da-silva
+** Last update Mon May 23 16:04:49 2016 virgile junique
 */
 
 #include "42sh.h"
+#include "builtins.h"
 
 int	my_exit(char *str, t_params *p, int value)
 {
