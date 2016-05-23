@@ -5,14 +5,14 @@
 ** Login   <meridj_m@meridj_m@epitech.eu>
 **
 ** Started on  Fri May  6 12:43:00 2016 Mehdi Meridja
-** Last update Tue May 10 17:07:13 2016 virgile junique
+** Last update Mon May 23 14:02:07 2016 Lemeh
 */
 
 #include "42sh.h"
 
-void		my_free_tab(char **message)
+void	my_free_tab(char **message)
 {
-  int		i;
+  int	i;
 
   i = -1;
   while (message[++i] != NULL)
