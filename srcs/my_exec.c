@@ -5,7 +5,7 @@
 ** Login   <meridj_m@epitech.net>
 **
 ** Started on  Mon May 23 09:12:46 2016 Lemeh
-** Last update Mon May 23 11:30:32 2016 Lemeh
+** Last update Mon May 23 11:47:09 2016 Lemeh
 */
 
 #include <sys/types.h>
@@ -80,7 +80,7 @@ void	my_exec(t_params *p)
   else
     ret = my_access(command_tab, p);
   if (ret == 0)
-    fprintf(stderr, "Command not found\n");
+    fprintf(stderr, "%s: Command not found\n", command_tab[0]);
   my_free_tab(command_tab);
   return ;
 }
