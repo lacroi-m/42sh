@@ -5,7 +5,7 @@
 ** Login   <da-sil_t@epitech.net>
 **
 ** Started on  Mon May 23 14:33:34 2016 theo da-silva
-** Last update Mon May 23 16:05:19 2016 virgile junique
+** Last update Mon May 23 16:25:27 2016 theo da-silva
 */
 
 #include "42sh.h"
@@ -23,7 +23,7 @@ void	my_fill_builtins_name(char tab[6])
 
 int	my_builtins(char *str, t_params *p, int pos)
 {
-  int	(*f[6])(char *str, t_params *p, int values);
+  int	(*f[6])(char *str, t_params *p);
 
   f[0] = &my_chdir;
   f[1] = &my_setenv;

@@ -5,19 +5,33 @@
 ** Login   <da-sil_t@epitech.net>
 **
 ** Started on  Mon May  2 16:39:13 2016 theo da-silva
-** Last update Mon May 23 16:04:49 2016 virgile junique
+** Last update Mon May 23 15:51:24 2016 theo da-silva
 */
 
 #include "42sh.h"
-#include "builtins.h"
 
-int	my_exit(char *str, t_params *p, int value)
+static int	check_value(char *str)
 {
-  (void)str;
+  int		i;
+
+  i = 0;
+  while (str[i] != '\0')
+    {
+      if (str[i] < '0' || str[i] > '9')
+	return (my_putstr("exit: Expression Syntax.", 2, -1));
+      i++;
+    }
+  return (0);
+}
+
+int	my_exit(char *str, t_params *p)
+{
+  if (check_value(str) == -1)
+    return (-1);
   my_free_tab(p->path_tab); /*free tab path */
   my_free_tab(p->env_tab);
   my_clear_list(&p->env); /* free_env */
   free(p->prompt);
-  exit(value % 255);
+  exit(my_getnbr(str) % 255);
   return (0);
 }
