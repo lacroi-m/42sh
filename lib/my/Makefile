@@ -5,7 +5,7 @@
 ## Login   <juniqu_v@epitech.net>
 ## 
 ## Started on  Mon May  2 11:30:05 2016 virgile junique
-## Last update Tue May 10 17:02:15 2016 virgile junique
+## Last update Mon May 23 10:10:12 2016 Lemeh
 ##
 
 CC	= cc
@@ -19,7 +19,9 @@ SRCS	= my_putchar.c \
 	  my_strlen.c \
 	  my_putstr.c \
 	  my_strndup.c \
+	  my_str_to_wordtab.c \
 	  my_strncat.c \
+	  my_strcat.c \
 	  get_next_line.c \
 	  wordtab_custom.c \
 	  path.c

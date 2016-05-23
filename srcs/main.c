@@ -5,7 +5,7 @@
 ** Login   <meridj_m@meridj_m@epitech.eu>
 **
 ** Started on  Sun Apr 10 15:28:55 2016 Mehdi Meridja
-** Last update Thu May 12 18:17:40 2016 virgile junique
+** Last update Mon May 23 11:31:52 2016 Lemeh
 */
 
 #include "42sh.h"
@@ -15,11 +15,17 @@ void	my_loop(t_params *p)
 {
   while ((p->prompt = get_next_line(0)))
     {
-      /*  my_parser(p, str);
-	  my_exec(p);*/
+      if (p->prompt[0] == 0)
+	write(1, "$> ", 3);
+      else
+	{
+	  /*  my_parser(p, str);*/
+	  my_exec(p);
+	  write(1, "$> ", 3);
+	}
       free(p->prompt);
-      write(1, "$>", 2);
     }
+  return ;
 }
 
 int		main(int ac, char **av, char **envp)

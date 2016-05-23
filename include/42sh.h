@@ -1,11 +1,11 @@
 /*
 ** 42sh.h for 42sh in /home/juniqu_v/rendu/PSU_2015_42sh/include
-** 
+**
 ** Made by virgile junique
 ** Login   <juniqu_v@epitech.net>
-** 
+**
 ** Started on  Mon May  2 13:02:44 2016 virgile junique
-** Last update Thu May 12 18:00:22 2016 virgile junique
+** Last update Mon May 23 09:14:50 2016 Lemeh
 */
 
 #ifndef _42SH_H_
@@ -30,6 +30,9 @@ typedef struct s_params
   char		**env_tab;
   /* struct parametre a faire bouge */
 }		t_params;
+
+/* my_exec.c */
+void	my_exec(t_params *p);
 
 void	my_load_env(t_params *p, char **envp);
 void	my_loop(t_params *p);

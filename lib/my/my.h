@@ -5,7 +5,7 @@
 ** Login   <juniqu_v@epitech.net>
 **
 ** Started on  Mon May  2 12:21:16 2016 virgile junique
-** Last update Tue May 10 17:02:20 2016 virgile junique
+** Last update Mon May 23 10:10:04 2016 Lemeh
 */
 
 #ifndef _MY_H_
@@ -24,6 +24,7 @@ int	my_strlen(char *str);
 int	len_word(char *str, int num);
 char	*check_slash(char *str);
 char	*my_strncat(char *dest, char *src, int n);
+char	*my_strcat(char *dest, char *src);
 char	*my_strndup(char *src, int n);
 char	**wordtab_custom(char *str);
 

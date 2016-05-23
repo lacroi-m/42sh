@@ -5,7 +5,7 @@
 ## Login   <juniqu_v@epitech.net>
 ## 
 ## Started on  Mon May  2 12:27:35 2016 virgile junique
-## Last update Tue May 10 17:17:28 2016 virgile junique
+## Last update Mon May 23 09:15:14 2016 Lemeh
 ##
 
 CC	= cc
@@ -24,6 +24,7 @@ SRC	= $(addprefix srcs/, \
 	    my_list.c \
 	    my_init.c \
 	    my_exit.c \
+	    my_exec.c \
 	    echo.c)
 
 OBJ	= $(SRC:.c=.o)

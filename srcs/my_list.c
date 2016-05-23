@@ -1,17 +1,17 @@
 /*
 ** my_list.c for my_list in /home/juniqu_v/rendu/PSU_2015_42sh/srcs
-** 
+**
 ** Made by virgile junique
 ** Login   <juniqu_v@epitech.net>
-** 
+**
 ** Started on  Mon May  9 14:59:47 2016 virgile junique
-** Last update Tue May 10 13:28:35 2016 virgile junique
+** Last update Mon May 23 09:09:48 2016 Lemeh
 */
 
 #include "42sh.h"
 #include "my_env.h"
 
-t_env	*my_init_list()
+t_env	*my_init_list(void)
 {
   t_env	*env;
 
@@ -37,6 +37,7 @@ void	my_add_elem(t_env *elem, char *str)
       elem->prev->next = new;
       elem->prev = new;
     }
+  return ;
 }
 
 void	my_aff_list(t_env *list)
@@ -50,6 +51,7 @@ void	my_aff_list(t_env *list)
       my_putchar('\n', 1);
       aff = aff->next;
     }
+  return ;
 }
 
 void	my_revome_elem(t_env *list, int pos)
@@ -60,10 +62,11 @@ void	my_revome_elem(t_env *list, int pos)
   elem = list;
   i = -1;
   while (++i < pos)
-    elem = elem->next; 
+    elem = elem->next;
   elem->prev->next = elem->next;
   elem->next->prev = elem->prev;
   free(elem);
+  return ;
 }
 
 void	my_clear_list(t_env **env)
@@ -80,4 +83,5 @@ void	my_clear_list(t_env **env)
     }
   free(*env);
   *env = NULL;
+  return ;
 }
