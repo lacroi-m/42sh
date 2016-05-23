@@ -5,7 +5,7 @@
 ** Login   <juniqu_v@epitech.net>
 **
 ** Started on  Mon May  9 14:59:47 2016 virgile junique
-** Last update Mon May 23 09:09:48 2016 Lemeh
+** Last update Mon May 23 22:56:48 2016 virgile junique
 */
 
 #include "42sh.h"
@@ -47,14 +47,14 @@ void	my_aff_list(t_env *list)
   aff = list->next;
   while (aff != list)
     {
-      my_putstr(aff->line, 1);
+      my_putstr(aff->line, 1, 0);
       my_putchar('\n', 1);
       aff = aff->next;
     }
   return ;
 }
 
-void	my_revome_elem(t_env *list, int pos)
+void	my_remove_elem(t_env *list, int pos)
 {
   int	i;
   t_env	*elem;

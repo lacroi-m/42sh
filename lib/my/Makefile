@@ -5,7 +5,7 @@
 ## Login   <juniqu_v@epitech.net>
 ## 
 ## Started on  Mon May  2 11:30:05 2016 virgile junique
-## Last update Mon May 23 10:10:12 2016 Lemeh
+## Last update Mon May 23 22:36:26 2016 virgile junique
 ##
 
 CC	= cc
@@ -15,16 +15,22 @@ RM	= rm -f
 NAME	= libmy.a
 
 SRCS	= my_putchar.c \
-	  xmalloc.c \
 	  my_strlen.c \
 	  my_putstr.c \
-	  my_strndup.c \
 	  my_str_to_wordtab.c \
-	  my_strncat.c \
 	  my_strcat.c \
+	  my_strncat.c \
+	  my_strcmp.c \
+	  my_strncmp.c \
+	  my_strndup.c \
+	  my_strdup.c \
+	  my_strcpy.c \
+	  my_strncpy.c \
 	  get_next_line.c \
 	  wordtab_custom.c \
-	  path.c
+	  path.c \
+	  test_system.c \
+	  my_free.c \
 
 OBJS	= $(SRCS:.c=.o)
 

@@ -5,26 +5,30 @@
 ** Login   <da-sil_t@epitech.net>
 **
 ** Started on  Mon May 23 14:33:34 2016 theo da-silva
-** Last update Mon May 23 16:27:31 2016 theo da-silva
+** Last update Mon May 23 23:27:04 2016 virgile junique
 */
 
 #include "42sh.h"
 #include "builtins.h"
 
-void	my_fill_builtins_name(char tab[6])
+static int	my_chdir(char *str, t_params *p)
 {
-  tab[0] = my_strcpy("cd");
-  tab[1] = my_strcpy("setenv");
-  tab[2] = my_strcpy("unsetenv");
-  tab[3] = my_strcpy("unsetenv");
-  tab[4] = my_strcpy("env");
-  tab[5] = my_strcpy("echo");
-  tab[6] = my_strcpy("history");
+  (void)str;
+  (void)p;
+  return (0);
+}
+
+static int	my_history(char *str, t_params *p)
+{
+  (void)str;
+  (void)p;
+  return (0);
 }
 
 int	my_builtins(char *str, t_params *p, int pos)
 {
   int	(*f[7])(char *str, t_params *p);
+  int	r;
 
   f[0] = &my_chdir;
   f[1] = &my_setenv;
@@ -33,20 +37,27 @@ int	my_builtins(char *str, t_params *p, int pos)
   f[4] = &my_exit;
   f[5] = &my_echo;
   f[6] = &my_history;
-  r = f[pos](command, env);
+  r = f[pos](str, p);
   return (r);
 }
 
 int	its_builtins(char *str)
 {
-  char  builtins_name[6];
+  char  *tab[8];
   int	i;
 
   i = 0;
-  my_fill_builtins_name(builtins_name);
-  while (i != 6)
+  tab[0] = "cd";
+  tab[1] = "setenv";
+  tab[2] = "unsetenv";
+  tab[3] = "env";
+  tab[4] = "exit";
+  tab[5] = "echo";
+  tab[6] = "history";
+  tab[7] = NULL;
+  while (tab[i])
     {
-      if (my_strcmp(str, builtins_name) == 0)
+      if (my_strcmp(str, tab[i]) == 0)
 	return (i);
       i++;
     }

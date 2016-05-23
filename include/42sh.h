@@ -5,13 +5,15 @@
 ** Login   <juniqu_v@epitech.net>
 **
 ** Started on  Mon May  2 13:02:44 2016 virgile junique
-** Last update Mon May 23 16:07:26 2016 virgile junique
+** Last update Mon May 23 21:55:35 2016 virgile junique
 */
 
 #ifndef _42SH_H_
-
 # define _42SH_H_
 
+# include <dirent.h>
+# include <sys/types.h>
+# include <sys/wait.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <signal.h>
@@ -21,7 +23,6 @@
 # include "get_next_line.h"
 # include "my.h"
 # include "my_env.h"
-# include "builtins.h"
 
 typedef struct s_params
 {
@@ -31,12 +32,11 @@ typedef struct s_params
   char		**env_tab;
 }		t_params;
 
+# include "builtins.h"
 
 void	my_exec(t_params *p);
 void	my_load_env(t_params *p, char **envp);
 void	my_loop(t_params *p);
-int	my_exit(char *str, t_params *p, int value);
 void	my_init(t_params *p);
-void	my_free_tab(char **tab);
 
 #endif /* !42SH_H_ */

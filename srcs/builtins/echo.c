@@ -5,7 +5,7 @@
 ** Login   <meridj_m@meridj_m@epitech.eu>
 **
 ** Started on  Fri May  6 12:43:00 2016 Mehdi Meridja
-** Last update Mon May 23 16:03:21 2016 virgile junique
+** Last update Mon May 23 22:34:00 2016 virgile junique
 */
 
 #include "42sh.h"
@@ -55,17 +55,16 @@ static void	no_backslash_n(char **message)
   return ;
 }
 
-void	my_echo(char *str, t_params *p, int value)
+int	my_echo(char *str, t_params *p)
 {
   char	**message;
 
   (void)p;
-  (void)value;
   message = wordtab_custom(str);
   if ((check_option(message)) == 1)
     no_backslash_n(message);
   else
     no_option(message);
-  my_free_tab(message);
-  return ;
+  my_free_ctab(message);
+  return (0);
 }

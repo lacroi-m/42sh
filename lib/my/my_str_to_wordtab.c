@@ -1,28 +1,14 @@
 /*
 ** my_str_to_wordtab.c for my_str_to_wordtab.c in /home/da-sil_t/rendu/test
-** 
+**
 ** Made by theo da-silva
 ** Login   <da-sil_t@epitech.net>
-** 
+**
 ** Started on  Fri Jan 22 16:52:21 2016 theo da-silva
-** Last update Mon May  2 16:29:22 2016 theo da-silva
+** Last update Mon May 23 21:04:07 2016 virgile junique
 */
 
-#include <stdlib.h>
-
-char	*my_strndup(char *str, int size)
-{
-  char	*r;
-  int	i;
-
-  i = 0;
-  if ((r = malloc((size + 1) * sizeof(char))) == NULL)
-    return (NULL);
-  while (i != size && str[i] != '\0')
-    r[i] = str[i++];
-  r[i] = '\0';
-  return (r);
-}
+#include "my.h"
 
 int	my_nb_word(char *str)
 {

@@ -5,7 +5,7 @@
 ** Login   <da-sil_t@epitech.net>
 **
 ** Started on  Mon May  2 16:39:13 2016 theo da-silva
-** Last update Mon May 23 15:51:24 2016 theo da-silva
+** Last update Mon May 23 23:36:11 2016 virgile junique
 */
 
 #include "42sh.h"
@@ -24,14 +24,21 @@ static int	check_value(char *str)
   return (0);
 }
 
-int	my_exit(char *str, t_params *p)
+int		my_exit(char *str, t_params *p)
 {
-  if (check_value(str) == -1)
+  int		r;
+
+  r = -1;
+  if (str != NULL && check_value(str) == -1)
     return (-1);
-  my_free_tab(p->path_tab); /*free tab path */
-  my_free_tab(p->env_tab);
-  my_clear_list(&p->env); /* free_env */
+  if (p->path_tab != NULL)
+    my_free_ctab(p->path_tab);
+  if (p->env_tab != NULL)
+    my_free_ctab(p->env_tab);
+  my_clear_list(&p->env);
   free(p->prompt);
-  exit(my_getnbr(str) % 255);
+  if (str != NULL)
+    r = atoi(str);
+  exit(r % 255);
   return (0);
 }

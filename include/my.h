@@ -5,7 +5,7 @@
 ** Login   <juniqu_v@epitech.net>
 **
 ** Started on  Mon May  2 12:21:16 2016 virgile junique
-** Last update Mon May 23 15:51:17 2016 virgile junique
+** Last update Mon May 23 22:40:55 2016 virgile junique
 */
 
 #ifndef _MY_H_
@@ -16,16 +16,28 @@
 # include <unistd.h>
 # include "get_next_line.h"
 
-void	count_word(char *str, int *nb);
+void	my_free_ctab(char **tab);
+void	my_free_itab(int **tab);
 void	my_putchar(char c, int fd);
-void	my_putstr(char *str, int fd, int value);
+void	xclose(int fd);
+void	count_word(char *str, int *nb);
+void	*xmemset(char *str);
 void	*xmalloc(int size);
-int	my_strlen(char *str);
+int	xopen(const char *pathname, int flag);
 int	len_word(char *str, int num);
+int	my_nb_word(char *str);
+int	my_putstr(char *str, int fd, int value);
+int	my_strcmp(char *s1, char *s2);
+int	my_strncmp(char *s1, char *s2, int n);
+int	my_strlen(char *str);
+char	*my_strcpy(char *dest, char *src);
+char	*my_strncpy(char *dest, char *src, int n);
 char	*check_slash(char *str);
 char	*my_strncat(char *dest, char *src, int n);
 char	*my_strcat(char *dest, char *src);
 char	*my_strndup(char *src, int n);
+char	*my_strdup(char *src);
+char	**my_str_to_wordtab(char *str);
 char	**wordtab_custom(char *str);
 
 #endif /* !MY.H */

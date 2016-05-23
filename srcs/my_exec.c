@@ -5,7 +5,7 @@
 ** Login   <meridj_m@epitech.net>
 **
 ** Started on  Mon May 23 09:12:46 2016 Lemeh
-** Last update Mon May 23 16:11:11 2016 virgile junique
+** Last update Mon May 23 21:34:11 2016 virgile junique
 */
 
 #include "42sh.h"
@@ -52,7 +52,7 @@ static int	my_access(char **command_tab, t_params *p)
 
   i = -1;
   if (p->path_tab != NULL)
-    my_free_tab(p->path_tab);
+    my_free_ctab(p->path_tab);
   p->path_tab = my_pathway(p->env);
   while (p->path_tab[++i] != NULL)
     {
@@ -80,6 +80,6 @@ void	my_exec(t_params *p)
     ret = my_access(command_tab, p);
   if (ret == 0)
     fprintf(stderr, "%s: Command not found.\n", command_tab[0]);
-  my_free_tab(command_tab);
+  my_free_ctab(command_tab);
   return ;
 }
