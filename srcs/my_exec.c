@@ -5,7 +5,7 @@
 ** Login   <meridj_m@epitech.net>
 **
 ** Started on  Mon May 23 09:12:46 2016 Lemeh
-** Last update Mon May 23 21:34:11 2016 virgile junique
+** Last update Tue May 24 14:43:57 2016 Lemeh
 */
 
 #include "42sh.h"
@@ -20,6 +20,7 @@ static int     my_fork_local(char **envp, char **command_tab)
       || (opendir(command_tab[0])) != NULL)
     {
       fprintf(stderr, "%s: Command not found.\n", command_tab[0]);
+      fflush(stdout);
       return (-1);
     }
   if ((pid = fork()) == -1)
@@ -41,11 +42,10 @@ static int     my_fork(char *command, char **command_tab, char **envp)
     execve(command, command_tab, envp);
   else
     wait(NULL);
-  free(command);
   return (0);
 }
 
-static int	my_access(char **command_tab, t_params *p)
+static char	*my_access(char **command_tab, t_params *p)
 {
   int		i;
   char		*command;
@@ -58,28 +58,28 @@ static int	my_access(char **command_tab, t_params *p)
     {
       command = my_strcat(p->path_tab[i], command_tab[0]);
       if ((access(command, X_OK)) == 0)
-	{
-	  my_fork(command, command_tab, p->env_tab);
-	  return (1);
-	}
+	return (command);
       free(command);
     }
-  return (0);
+  return (NULL);
 }
 
 void	my_exec(t_params *p)
 {
   char	**command_tab;
-  int	ret;
+  char	*command;
 
-  ret = -1;
   command_tab = my_str_to_wordtab(p->prompt);
   if ((strncmp(command_tab[0], "./", 2)) == 0)
     my_fork_local(p->env_tab, command_tab);
   else
-    ret = my_access(command_tab, p);
-  if (ret == 0)
-    fprintf(stderr, "%s: Command not found.\n", command_tab[0]);
+    {
+      if ((command = my_access(command_tab, p)) == NULL)
+	fprintf(stderr, "%s: Command not found.\n", command_tab[0]);
+      else
+	my_fork(command, command_tab, p->env_tab);
+    }
+  free(command);
   my_free_ctab(command_tab);
   return ;
 }

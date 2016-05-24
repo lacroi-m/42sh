@@ -5,7 +5,7 @@
 ** Login   <meridj_m@meridj_m@epitech.eu>
 **
 ** Started on  Fri May  6 12:43:00 2016 Mehdi Meridja
-** Last update Tue May 24 14:07:01 2016 Lemeh
+** Last update Tue May 24 14:30:37 2016 Lemeh
 */
 
 #include "42sh.h"
@@ -24,6 +24,7 @@ static void	no_option(char **message)
 	printf("%s", message[i]);
       i++;
     }
+  fflush(stdout);
   printf("\n");
   return ;
 }

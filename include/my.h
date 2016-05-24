@@ -5,13 +5,15 @@
 ** Login   <juniqu_v@epitech.net>
 **
 ** Started on  Mon May  2 12:21:16 2016 virgile junique
-** Last update Mon May 23 22:40:55 2016 virgile junique
+** Last update Tue May 24 14:16:48 2016 Lemeh
 */
 
 #ifndef _MY_H_
 
 # define _MY_H_
 
+# include <sys/stat.h>
+# include <fcntl.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include "get_next_line.h"
