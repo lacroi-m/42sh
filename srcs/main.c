@@ -5,7 +5,7 @@
 ** Login   <meridj_m@meridj_m@epitech.eu>
 **
 ** Started on  Sun Apr 10 15:28:55 2016 Mehdi Meridja
-** Last update Mon May 23 23:21:01 2016 virgile junique
+** Last update Tue May 24 13:37:49 2016 Lemeh
 */
 
 #include "42sh.h"
@@ -23,7 +23,10 @@ void	my_loop(t_params *p)
       if (p->prompt[0] == 0)
 	write(1, "$> ", 3);
       else if ((pos = its_builtins(tab[0])) > 0)
-	my_builtins(tab[1], p, pos);
+	{
+	  my_builtins(tab, tab[1], p, pos);
+	  write(1, "$> ", 3);
+	}
       else
 	{
 	  /*  my_parser(p, str);*/
@@ -52,6 +55,6 @@ int		main(int ac, char **av, char **envp)
   else
     p.env = my_init_list();
   my_loop(&p);
-  my_exit("10", &p);
+  my_exit(av, "10", &p);
   return (0);
 }

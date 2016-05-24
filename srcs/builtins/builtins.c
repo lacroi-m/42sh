@@ -5,29 +5,31 @@
 ** Login   <da-sil_t@epitech.net>
 **
 ** Started on  Mon May 23 14:33:34 2016 theo da-silva
-** Last update Mon May 23 23:27:04 2016 virgile junique
+** Last update Tue May 24 13:36:00 2016 Lemeh
 */
 
 #include "42sh.h"
 #include "builtins.h"
 
-static int	my_chdir(char *str, t_params *p)
+static int	my_chdir(char **tab, char *str, t_params *p)
 {
+  (void)tab;
   (void)str;
   (void)p;
   return (0);
 }
 
-static int	my_history(char *str, t_params *p)
+static int	my_history(char **tab, char *str, t_params *p)
 {
+  (void)tab;
   (void)str;
   (void)p;
   return (0);
 }
 
-int	my_builtins(char *str, t_params *p, int pos)
+int	my_builtins(char **tab, char *str, t_params *p, int pos)
 {
-  int	(*f[7])(char *str, t_params *p);
+  int	(*f[7])(char **tab, char *str, t_params *p);
   int	r;
 
   f[0] = &my_chdir;
@@ -37,7 +39,7 @@ int	my_builtins(char *str, t_params *p, int pos)
   f[4] = &my_exit;
   f[5] = &my_echo;
   f[6] = &my_history;
-  r = f[pos](str, p);
+  r = f[pos](tab, str, p);
   return (r);
 }
 

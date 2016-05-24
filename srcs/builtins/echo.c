@@ -5,36 +5,24 @@
 ** Login   <meridj_m@meridj_m@epitech.eu>
 **
 ** Started on  Fri May  6 12:43:00 2016 Mehdi Meridja
-** Last update Mon May 23 22:34:00 2016 virgile junique
+** Last update Tue May 24 14:07:01 2016 Lemeh
 */
 
 #include "42sh.h"
 #include "builtins.h"
 
-static int	check_option(char **option)
-{
-  int		i;
-
-  i = 0;
-  while (option[++i] != NULL)
-    {
-      if ((strncmp(option[i], "-n", 2)) == 0)
-	return (1);
-    }
-  return (0);
-}
-
 static void	no_option(char **message)
 {
   int		i;
 
-  i = 0;
-  while (message[++i] != NULL)
+  i = 1;
+  while (message[i] != NULL)
     {
       if (message[i + 1] != NULL)
 	printf("%s ", message[i]);
       else
 	printf("%s", message[i]);
+      i++;
     }
   printf("\n");
   return ;
@@ -44,27 +32,25 @@ static void	no_backslash_n(char **message)
 {
   int		i;
 
-  i = 1;
-  while (message[++i] != NULL)
+  i = 2;
+  while (message[i] != NULL)
     {
       if (message[i + 1] != NULL)
 	printf("%s ", message[i]);
       else
 	printf("%s", message[i]);
+      fflush(stdout);
+      i++;
     }
   return ;
 }
 
-int	my_echo(char *str, t_params *p)
+int	my_echo(char **tab, char *str, t_params *p)
 {
-  char	**message;
-
   (void)p;
-  message = wordtab_custom(str);
-  if ((check_option(message)) == 1)
-    no_backslash_n(message);
+  if ((strncmp(str, "-n", 2)) == 0)
+    no_backslash_n(tab);
   else
-    no_option(message);
-  my_free_ctab(message);
+    no_option(tab);
   return (0);
 }

@@ -5,7 +5,7 @@
 ** Login   <da-sil_t@epitech.net>
 **
 ** Started on  Mon May  2 16:39:13 2016 theo da-silva
-** Last update Mon May 23 23:36:11 2016 virgile junique
+** Last update Tue May 24 13:38:33 2016 Lemeh
 */
 
 #include "42sh.h"
@@ -24,10 +24,11 @@ static int	check_value(char *str)
   return (0);
 }
 
-int		my_exit(char *str, t_params *p)
+int		my_exit(char **tab, char *str, t_params *p)
 {
   int		r;
 
+  (void)tab;
   r = -1;
   if (str != NULL && check_value(str) == -1)
     return (-1);
