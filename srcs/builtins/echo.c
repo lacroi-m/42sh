@@ -5,53 +5,68 @@
 ** Login   <meridj_m@meridj_m@epitech.eu>
 **
 ** Started on  Fri May  6 12:43:00 2016 Mehdi Meridja
-** Last update Tue May 24 14:30:37 2016 Lemeh
+** Last update Wed May 25 16:25:28 2016 Lemeh
 */
 
 #include "42sh.h"
 #include "builtins.h"
 
-static void	no_option(char **message)
+static char	*parsing_quote(char *str)
+{
+  int		i;
+
+  i = -1;
+  if (str[0] == '"')
+    {
+      while (str[++i] != 0)
+	str[i] = str[i + 1];
+      i = strlen(str) - 1;
+      if (str[i] == '"' || str[i + 1] == '"')
+	str[i] = 0;
+    }
+  return (str);
+}
+
+static void	with_bachslash_n(char **tab)
 {
   int		i;
 
   i = 1;
-  while (message[i] != NULL)
-    {
-      if (message[i + 1] != NULL)
-	printf("%s ", message[i]);
-      else
-	printf("%s", message[i]);
-      i++;
-    }
-  fflush(stdout);
+  while (tab[++i] != NULL)
+    if (tab[i + 1] != NULL)
+      printf("%s ", parsing_quote(tab[i]));
+    else
+      printf("%s", parsing_quote(tab[i]));
+  return ;
+}
+
+static void	no_option(char **tab)
+{
+  int		i;
+
+  i = 0;
+  while (tab[++i] != NULL)
+    if (tab[i + 1] != NULL)
+      printf("%s ", parsing_quote(tab[i]));
+    else
+      printf("%s", parsing_quote(tab[i]));
   printf("\n");
   return ;
 }
 
-static void	no_backslash_n(char **message)
+int	my_echo(char *str, t_params *p)
 {
-  int		i;
+  char	**tab;
 
-  i = 2;
-  while (message[i] != NULL)
-    {
-      if (message[i + 1] != NULL)
-	printf("%s ", message[i]);
-      else
-	printf("%s", message[i]);
-      fflush(stdout);
-      i++;
-    }
-  return ;
-}
-
-int	my_echo(char **tab, char *str, t_params *p)
-{
-  (void)p;
-  if ((strncmp(str, "-n", 2)) == 0)
-    no_backslash_n(tab);
+  (void)str;
+  tab = my_str_to_wordtab(p->prompt);
+  if (tab[1])
+    if (strcmp("-n", tab[1]) == 0)
+      with_bachslash_n(tab);
+    else
+      no_option(tab);
   else
-    no_option(tab);
+    printf("\n");
+  my_free_ctab(tab);
   return (0);
 }

@@ -5,7 +5,7 @@
 ** Login   <juniqu_v@epitech.net>
 **
 ** Started on  Mon May 23 15:27:52 2016 virgile junique
-** Last update Tue May 24 13:33:28 2016 Lemeh
+** Last update Wed May 25 15:50:13 2016 Lemeh
 */
 
 #include "42sh.h"
@@ -13,9 +13,8 @@
 #include "builtins.h"
 #include "my.h"
 
-int	my_env(char **tab, char *str, t_params *p)
+int	my_env(char *str, t_params *p)
 {
-  (void)tab;
   (void)str;
   my_aff_list(p->env);
   write (1, "$> ", 3);
@@ -41,14 +40,13 @@ int	my_found_in_env(char *str, t_env *env)
   return (-1);
 }
 
-int	my_setenv(char **tab, char *line, t_params *p)
+int	my_setenv(char *line, t_params *p)
 {
   char	**elem;
   char	*str;
   int	i;
   int	j;
 
-  (void)tab;
   i = 0;
   j = 0;
   elem = my_str_to_wordtab(line);
@@ -69,12 +67,11 @@ int	my_setenv(char **tab, char *line, t_params *p)
   return (0);
 }
 
-int	my_unsetenv(char **tab, char *line, t_params *p)
+int	my_unsetenv(char *line, t_params *p)
 {
   char	**elem;
   int	pos;
 
-  (void)tab;
   elem = my_str_to_wordtab(line);
   if (elem[1] != NULL)
     {
