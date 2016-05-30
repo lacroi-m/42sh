@@ -5,7 +5,7 @@
 ## Login   <juniqu_v@epitech.net>
 ## 
 ## Started on  Mon May  2 12:27:35 2016 virgile junique
-## Last update Mon May 23 22:26:09 2016 virgile junique
+## Last update Mon May 30 15:28:47 2016 virgile junique
 ##
 
 CC	= cc
@@ -24,6 +24,7 @@ SRC	= $(addprefix srcs/, \
 	    my_list.c \
 	    my_init.c \
 	    my_exec.c \
+	    syntaxe.c \
 	    builtins/builtins.c \
 	    builtins/built_env.c \
 	    builtins/my_exit.c \

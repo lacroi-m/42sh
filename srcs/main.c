@@ -5,37 +5,41 @@
 ** Login   <meridj_m@meridj_m@epitech.eu>
 **
 ** Started on  Sun Apr 10 15:28:55 2016 Mehdi Meridja
-** Last update Wed May 25 15:52:09 2016 Lemeh
+** Last update Mon May 30 19:29:28 2016 virgile junique
 */
 
 #include "42sh.h"
 #include "my_env.h"
 #include "builtins.h"
 
-void	my_loop(t_params *p)
+static void    	my_loop(t_params *p)
 {
-  char	**tab;
-  int	pos;
+  int		syntaxe;
 
-  while ((p->prompt = get_next_line(0)))
+  syntaxe = 0;
+  while (write(1, "$> ", 3) != -1 && (p->prompt = get_next_line(0)))
     {
-      tab = my_str_to_wordtab(p->prompt);
       if (p->prompt[0] == 0)
-	write(1, "$> ", 3);
-      else if ((pos = its_builtins(tab[0])) > 0)
 	{
-	  my_builtins(tab[1], p, pos);
-	  write(1, "$> ", 3);
+	  free(p->prompt);
+	  continue;
+	}
+      else if ((syntaxe = check_syntax(p)) > 0)
+	{
+	  my_exec(p);
+	  free(p->prompt);
 	}
       else
 	{
-	  /*  my_parser(p, str);*/
+	  if (syntaxe <= -1)
+	    {
+	      err_syntax(syntaxe);
+	      free(p->prompt);
+	      continue;
+	    }
 	  my_exec(p);
-	  write(1, "$> ", 3);
+	  free(p->prompt);
 	}
-      my_free_ctab(tab);
-      free(p->prompt);
-      pos = -1;
     }
   return ;
 }

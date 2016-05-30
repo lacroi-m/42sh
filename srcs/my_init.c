@@ -5,7 +5,7 @@
 ** Login   <da-sil_t@epitech.net>
 **
 ** Started on  Mon May  2 13:44:52 2016 theo da-silva
-** Last update Mon May 23 22:14:41 2016 virgile junique
+** Last update Mon May 30 15:51:55 2016 virgile junique
 */
 
 #include "42sh.h"
@@ -34,5 +34,4 @@ void		my_init(t_params *p)
     }
   p->prompt = NULL;
   p->path_tab = NULL;
-  my_putstr("$> ", 1, 0);
 }
