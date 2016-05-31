@@ -5,7 +5,7 @@
 ** Login   <meridj_m@meridj_m@epitech.eu>
 **
 ** Started on  Sun Apr 10 15:28:55 2016 Mehdi Meridja
-** Last update Mon May 30 19:29:28 2016 virgile junique
+** Last update Tue May 31 10:51:03 2016 virgile junique
 */
 
 #include "42sh.h"
@@ -21,14 +21,11 @@ static void    	my_loop(t_params *p)
     {
       if (p->prompt[0] == 0)
 	{
-	  free(p->prompt);
+	  free(p->prompt);  /* et la pas le choix */
 	  continue;
 	}
       else if ((syntaxe = check_syntax(p)) > 0)
-	{
-	  my_exec(p);
-	  free(p->prompt);
-	}
+	my_exec(p); /* pensez a free le prompt dedans */
       else
 	{
 	  if (syntaxe <= -1)
@@ -37,8 +34,7 @@ static void    	my_loop(t_params *p)
 	      free(p->prompt);
 	      continue;
 	    }
-	  my_exec(p);
-	  free(p->prompt);
+	  my_exec(p); /* pareil ici */
 	}
     }
   return ;

@@ -5,7 +5,7 @@
 ** Login   <juniqu_v@epitech.net>
 **
 ** Started on  Mon May 23 21:17:57 2016 virgile junique
-** Last update Mon May 30 15:23:41 2016 virgile junique
+** Last update Tue May 31 10:53:39 2016 virgile junique
 */
 
 #include "my.h"
@@ -17,7 +17,7 @@ int	xopen(const char *pathname, int flag)
   fd = open(pathname, flag);
   if (fd == -1)
     {
-      my_putstr("File does not exist.\n",2, -1);
+      my_putstr("File does not exist.\n", 2, -1);
       exit(1);
     }
   return (fd);
@@ -52,7 +52,7 @@ void	*xmalloc(int size)
   str = malloc(size);
   if (str == NULL)
     {
-      my_putstr("Malloc error.\n",2, -1);
+      my_putstr("Malloc error.\n", 2, -1);
       exit(-1);
     }
   return (str);

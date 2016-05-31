@@ -5,7 +5,7 @@
 ** Login   <juniqu_v@epitech.net>
 **
 ** Started on  Mon May  9 15:42:37 2016 virgile junique
-** Last update Mon May 23 16:10:29 2016 virgile junique
+** Last update Tue May 31 10:48:20 2016 virgile junique
 */
 
 #include "42sh.h"
@@ -39,7 +39,7 @@ char	**my_env_in_tab(t_env *env)
   tmp = env->next;
   while (tmp != env)
     {
-      tab[i++] = strndup(tmp->line, my_strlen(tmp->line));
+      tab[i++] = my_strndup(tmp->line, my_strlen(tmp->line));
       tmp = tmp->next;
     }
   tab[i] = '\0';
@@ -99,7 +99,7 @@ void	my_load_env(t_params *p, char **envp)
   int	i;
 
   i = -1;
-  while(envp[++i] != '\0')
+  while (envp[++i] != '\0')
     my_add_elem(p->env, envp[i]);
   p->path_tab = 0;
   p->env_tab = my_env_in_tab(p->env);

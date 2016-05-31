@@ -5,7 +5,7 @@
 ** Login   <juniqu_v@epitech.net>
 **
 ** Started on  Mon May 23 15:55:18 2016 virgile junique
-** Last update Wed May 25 15:51:49 2016 Lemeh
+** Last update Tue May 31 10:42:32 2016 virgile junique
 */
 
 #ifndef _BUILTINS_H_
@@ -19,5 +19,8 @@ int	my_found_in_env(char *str, t_env *env);
 int	my_builtins(char *str, t_params *p, int pos);
 int	its_builtins(char *str);
 int	my_exit(char *str, t_params *p);
+int	my_old(t_params *p, t_env *env);
+int	go_home(t_params *p, t_env *env);
+int	go_dir(char *str, t_params *p);
 
 #endif /* !BUILTINS_H_ */

@@ -5,7 +5,7 @@
 ** Login   <da-sil_t@epitech.net>
 **
 ** Started on  Mon May 23 14:33:34 2016 theo da-silva
-** Last update Wed May 25 15:51:07 2016 Lemeh
+** Last update Tue May 31 10:42:20 2016 virgile junique
 */
 
 #include "42sh.h"
@@ -13,8 +13,12 @@
 
 static int	my_chdir(char *str, t_params *p)
 {
-  (void)str;
-  (void)p;
+  if ((my_strncmp(str, "-", 1)) == 0)
+    return (my_old(p, p->env));
+  else if (str == NULL)
+    return (go_home(p, p->env));
+  else
+    return (go_dir(str, p));
   return (0);
 }
 

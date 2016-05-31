@@ -5,7 +5,7 @@
 ** Login   <juniqu_v@epitech.net>
 **
 ** Started on  Mon May 23 15:27:52 2016 virgile junique
-** Last update Wed May 25 15:50:13 2016 Lemeh
+** Last update Tue May 31 10:51:45 2016 virgile junique
 */
 
 #include "42sh.h"
@@ -54,7 +54,8 @@ int	my_setenv(char *line, t_params *p)
     my_aff_list(p->env);
   else if (elem[2] != NULL)
     {
-      str = xmalloc(sizeof(char) * (my_strlen(elem[1]) + my_strlen(elem[2]) + 2));
+      str = xmalloc(sizeof(char)
+		    * (my_strlen(elem[1]) + my_strlen(elem[2]) + 2));
       while (elem[1][i++])
 	str[i] = elem[1][i];
       str[i++] = '=';
