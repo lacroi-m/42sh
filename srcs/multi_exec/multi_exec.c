@@ -5,7 +5,7 @@
 ** Login   <meridj_m@meridj_m@epitech.eu>
 **
 ** Started on  Tue May 31 15:03:40 2016 Mehdi Meridja
-** Last update Wed Jun  1 14:39:55 2016 Lemeh
+** Last update Wed Jun  1 14:42:13 2016 Mehdi Meridja
 */
 
 #include "parser.h"
@@ -77,7 +77,7 @@ void		multi_exec(t_params *p)
   t_parser	**parser;
 
   i = -1;
-  parser = xmalloc(sizeof(t_parser *) * (50));
+  parser = xmalloc(sizeof(t_parser *) * (p->len_tab));
   tab = wordtab_custom(p->prompt);
   free(p->prompt);
   while (tab[++i] != NULL)
