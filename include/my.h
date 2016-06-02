@@ -5,7 +5,7 @@
 ** Login   <juniqu_v@epitech.net>
 **
 ** Started on  Mon May  2 12:21:16 2016 virgile junique
-** Last update Tue May 24 14:16:48 2016 Lemeh
+** Last update Thu Jun  2 11:40:05 2016 Lemeh
 */
 
 #ifndef _MY_H_
@@ -25,6 +25,7 @@ void	xclose(int fd);
 void	count_word(char *str, int *nb);
 void	*xmemset(char *str);
 void	*xmalloc(int size);
+char	**xmalloc_tab(int size);
 int	xopen(const char *pathname, int flag);
 int	len_word(char *str, int num);
 int	my_nb_word(char *str);
@@ -40,6 +41,5 @@ char	*my_strcat(char *dest, char *src);
 char	*my_strndup(char *src, int n);
 char	*my_strdup(char *src);
 char	**my_str_to_wordtab(char *str);
-char	**wordtab_custom(char *str);
 
 #endif /* !MY.H */

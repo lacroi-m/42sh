@@ -5,7 +5,7 @@
 ** Login   <juniqu_v@epitech.net>
 **
 ** Started on  Mon May  2 13:02:44 2016 virgile junique
-** Last update Mon May 30 15:31:20 2016 virgile junique
+** Last update Thu Jun  2 11:51:15 2016 Lemeh
 */
 
 #ifndef _42SH_H_
@@ -23,15 +23,20 @@
 # include "get_next_line.h"
 # include "my.h"
 # include "my_env.h"
+# include "parser.h"
 
 typedef struct s_params
 {
   t_env		*env;
   int		*semi_colon;
+  int		semi_len;
   char		*prompt;
   char		**path_tab;
   char		**env_tab;
+  t_parser	**parser;
 }		t_params;
+
+void            multi_exec(t_params *p);
 
 # include "builtins.h"
 

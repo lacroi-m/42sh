@@ -5,7 +5,7 @@
 ** Login   <da-sil_t@epitech.net>
 **
 ** Started on  Mon May  2 13:44:52 2016 theo da-silva
-** Last update Mon May 30 15:51:55 2016 virgile junique
+** Last update Thu Jun  2 11:41:09 2016 Lemeh
 */
 
 #include "42sh.h"
@@ -32,6 +32,7 @@ void		my_init(t_params *p)
       fprintf(stdout, "SIGNAL ERROR\n");
       exit(-1);
     }
+  p->semi_len = 0;
   p->prompt = NULL;
   p->path_tab = NULL;
 }

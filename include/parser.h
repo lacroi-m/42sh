@@ -5,19 +5,15 @@
 ** Login   <meridj_m@meridj_m@epitech.eu>
 **
 ** Started on  Tue May 31 14:34:51 2016 Mehdi Meridja
-** Last update Tue May 31 17:02:55 2016 Mehdi Meridja
+** Last update Thu Jun  2 11:51:13 2016 Lemeh
 */
 
 #ifndef PARSER_H_
 # define PARSER_H_
 
-# include "42sh.h"
-
-typedef struct	s_parser
+typedef struct  s_parser
 {
-  char		**cmd;
-}		t_parser;
-
-void	multi_exec(t_params *p);
+  char          **cmd;
+}               t_parser;
 
 #endif /* !PARSER_H_ */

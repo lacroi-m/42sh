@@ -1,11 +1,11 @@
 ##
 ## Makefile for Makefile in /home/juniqu_v/rendu/PSU_2015_42sh/lib/my
-## 
+##
 ## Made by virgile junique
 ## Login   <juniqu_v@epitech.net>
-## 
+##
 ## Started on  Mon May  2 11:30:05 2016 virgile junique
-## Last update Mon May 23 22:36:26 2016 virgile junique
+## Last update Thu Jun  2 11:38:57 2016 Lemeh
 ##
 
 CC	= cc
@@ -27,9 +27,9 @@ SRCS	= my_putchar.c \
 	  my_strcpy.c \
 	  my_strncpy.c \
 	  get_next_line.c \
-	  wordtab_custom.c \
 	  path.c \
 	  test_system.c \
+	  test_system2.c \
 	  my_free.c \
 
 OBJS	= $(SRCS:.c=.o)

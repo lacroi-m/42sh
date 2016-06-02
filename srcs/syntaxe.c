@@ -5,7 +5,7 @@
 ** Login   <juniqu_v@epitech.net>
 **
 ** Started on  Mon May 30 15:24:00 2016 virgile junique
-** Last update Tue May 31 11:00:54 2016 virgile junique
+** Last update Thu Jun  2 11:35:15 2016 Lemeh
 */
 
 #include "42sh.h"
@@ -76,6 +76,7 @@ static void     fill_pos(t_params *p, int nb)
   i = 0;
   j = 0;
   p->semi_colon = xmalloc(sizeof(int) * (nb + 1));
+  p->semi_len = nb;
   while (p->prompt[i])
     {
       if (p->prompt[i] == '('
