@@ -5,7 +5,7 @@
 ** Login   <da-sil_t@epitech.net>
 **
 ** Started on  Mon May  2 13:44:52 2016 theo da-silva
-** Last update Sun Jun  5 16:11:52 2016 virgile junique
+** Last update Sun Jun  5 23:30:30 2016 virgile junique
 */
 
 #include "42sh.h"
@@ -34,19 +34,21 @@ static void	my_catch(int i)
 static void	my_put_segv(int i)
 {
   (void)i;
-  my_putstr("exit\n", 2, 0);
-  exit(-1);
+  my_putchar('\n', 1);
+  exit(ret);
 }
 
 void		my_init(t_params *p)
 {
   if ((signal(SIGINT, my_catch) == SIG_ERR
        || (signal(SIGTSTP, my_catch) == SIG_ERR)
-       || (signal(SIGSEGV, my_put_segv) == SIG_ERR)))
+       || (signal(SIGSEGV, my_put_segv)) == SIG_ERR))
     {
       fprintf(stdout, "SIGNAL ERROR\n");
       exit(-1);
     }
   p->path_tab = NULL;
+  p->state = 0;
   p->env_tab = NULL;
+  ret = 0;
 }

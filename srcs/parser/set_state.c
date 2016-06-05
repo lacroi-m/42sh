@@ -5,7 +5,7 @@
 ** Login   <lacroi_m@epitech.net>
 **
 ** Started on  Sat Jun  4 15:36:13 2016 Lacroix Maxime
-** Last update Sun Jun  5 15:45:32 2016 virgile junique
+** Last update Sun Jun  5 23:23:33 2016 virgile junique
 */
 
 #include "42sh.h"
@@ -18,14 +18,14 @@ static char	*nbr_to_str(int	i)
   nbr = NULL;
   if ((i / 10) == 0)
     {
-      nbr = malloc(sizeof(char) * 2);
+      nbr = xmalloc(sizeof(char) * 2);
       nbr[0] = (i + 48);
       nbr[1] = '\0';
       return (nbr);
     }
   else if ((i / 10) < 10)
     {
-      nbr = malloc(sizeof(char) * 3);
+      nbr = xmalloc(sizeof(char) * 3);
       tmp = i / 10;
       nbr[0] = (tmp + 48);
       tmp = i % 10;
@@ -42,13 +42,13 @@ void	set_state(t_params *p, int state)
   char	**tab;
 
   nbr = nbr_to_str(state);
-  tab = xmalloc(sizeof(char*) * 3);
-  tab[0] = my_strdup("?");
-  tab[1] = my_strdup(nbr);
-  tab[2] = NULL;
+  tab = xmalloc(sizeof(char *) * 4);
+  tab[0] = my_strdup("state");
+  tab[1] = my_strdup("?");
+  tab[2] = nbr;
+  tab[3] = NULL;
   my_setenv(tab, p);
   my_free_ctab(tab);
-  free(nbr);
 }
 
 char		*my_access(char **cmd, t_params *p)
@@ -64,7 +64,10 @@ char		*my_access(char **cmd, t_params *p)
     {
       command = my_strcat(p->path_tab[i], cmd[0]);
       if ((access(command, X_OK)) == 0)
-	return (command);
+	{
+	  my_free_ctab(p->path_tab);
+	  return (command);
+	}
       free(command);
     }
   return (NULL);

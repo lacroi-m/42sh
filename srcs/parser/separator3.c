@@ -5,49 +5,22 @@
 ** Login   <juniqu_v@epitech.net>
 **
 ** Started on  Sat Jun  4 18:12:49 2016 virgile junique
-** Last update Sun Jun  5 15:37:08 2016 virgile junique
+** Last update Sun Jun  5 21:27:52 2016 virgile junique
 */
 
 #include "42sh.h"
 
-static char    	*buff_entry()
-{
- static char	buff[1024];
-  int		size;
-
-  write (1, "?", 1);
-  if ((size = read(0, buff, 1023)) < 0)
-    return (0);
-  else if (size == 0)
-    return (0);
-  else
-    {
-      buff[size - 1] = '\0';
-      return (buff);
-    }
-  return (0);
-}
-
 static int     	stand_entry(char *line)
 {
-  char		*buff;
-  int		fd;
+  char		buff[1024];
+  int		size;
 
-  buff = NULL;
-  if ((fd = open("/tmp/.secret", O_WRONLY | O_CREAT
-		| O_TRUNC, S_IRUSR | S_IWUSR)) == -1)
-    return (-1);
-  while (my_strcmp(buff, line) != 0)
+  while (write(1, "?", 1) && ((size = read(0, buff, 1023)) > 0))
     {
-      buff = buff_entry();
-      if (my_strcmp(buff, line) != 0)
-	{
-	  my_putstr(buff, fd, 0);
-	  my_putchar('\n', fd);
-	}
+      buff[size] = '\0';
+      if (my_strncmp(buff, line, my_strlen(line)) == 0)
+	return (0);
     }
-  if (close(fd) == -1)
-    return (-1);
   return (0);
 }
 
@@ -55,7 +28,6 @@ int		sep_dubredirectl(t_node *tree, t_params *p, int last)
 {
   t_node	*right;
   char		**file;
-  int		fd;
 
   (void)last;
   right = tree->right;
@@ -64,11 +36,8 @@ int		sep_dubredirectl(t_node *tree, t_params *p, int last)
       if (!(file = my_str_to_wordtab(right->data)))
 	return (my_putstr("Missing right operand after <<\n", 2, -1));
       stand_entry(file[0]);
-      if ((fd = open("/tmp/.secret", O_RDONLY)) == -1)
-	return (-1);
-      tree->left->fd_in = fd;
-      start_exec(tree, p, 1);
-      close(fd);
+      tree->left->fd_in = 0;
+      start_exec(tree->left, p, 1);
     }
   else
     return (my_putstr("Missing right operand after <<\n", 2, -1));

@@ -5,7 +5,7 @@
 ** Login   <juniqu_v@epitech.net>
 **
 ** Started on  Mon May  2 13:02:44 2016 virgile junique
-** Last update Sun Jun  5 16:27:27 2016 virgile junique
+** Last update Sun Jun  5 23:25:44 2016 virgile junique
 */
 
 #ifndef _42SH_H_
@@ -24,8 +24,11 @@
 # include <stdio.h>
 # include "get_next_line.h"
 
+int		ret;
+
 typedef struct s_params
 {
+  int		state;
   t_env		*env;
   char		**path_tab;
   char		**env_tab;
@@ -37,6 +40,6 @@ typedef struct s_params
 void		my_load_env(t_params *p, char **envp);
 void		my_init(t_params *p);
 int		check_input(char *input);
-int		my_error(char *str, int value);
+int		my_error(char *str);
 
 #endif /* !42SH_H_ */

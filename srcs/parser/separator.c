@@ -5,12 +5,12 @@
 ** Login   <juniqu_v@epitech.net>
 **
 ** Started on  Sat Jun  4 15:27:49 2016 virgile junique
-** Last update Sun Jun  5 15:31:50 2016 virgile junique
+** Last update Sun Jun  5 23:17:19 2016 virgile junique
 */
 
 #include "42sh.h"
 
-static int	sep_and(t_node *tree, t_params *p, int last)
+static int	sep_or(t_node *tree, t_params *p, int last)
 {
   (void)last;
   if (start_exec(tree->left, p, 1) == -1)
@@ -20,7 +20,7 @@ static int	sep_and(t_node *tree, t_params *p, int last)
   return (0);
 }
 
-static int	sep_or(t_node *tree, t_params *p, int last)
+static int	sep_and(t_node *tree, t_params *p, int last)
 {
   (void)last;
   if (start_exec(tree->left, p, 1) == -1)
@@ -73,7 +73,7 @@ int     its_separator(char *str)
   tab[8] = NULL;
   while (tab[++i])
     {
-      if(my_strcmp(str, tab[i]) == 0)
+      if (my_strcmp(str, tab[i]) == 0)
         return (i);
     }
   return (-1);

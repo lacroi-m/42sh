@@ -5,13 +5,15 @@
 ** Login   <da-sil_t@epitech.net>
 **
 ** Started on  Mon May 23 14:33:34 2016 theo da-silva
-** Last update Sun Jun  5 11:52:40 2016 virgile junique
+** Last update Sun Jun  5 23:11:48 2016 virgile junique
 */
 
 #include "42sh.h"
 
 static int	my_chdir(char **cmd, t_params *p)
 {
+  chdir(cmd[1]);
+  return (0);
   if ((my_strncmp(cmd[1], "-", 1)) == 0)
     return (my_old(p, p->env));
   else if (cmd[1] == NULL)

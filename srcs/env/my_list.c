@@ -5,7 +5,7 @@
 ** Login   <juniqu_v@epitech.net>
 **
 ** Started on  Mon May  9 14:59:47 2016 virgile junique
-** Last update Sun Jun  5 11:34:18 2016 virgile junique
+** Last update Sun Jun  5 19:45:24 2016 virgile junique
 */
 
 #include "42sh.h"
@@ -58,7 +58,7 @@ void	my_remove_elem(t_env *list, int pos)
   int	i;
   t_env	*elem;
 
-  elem = list;
+  elem = list->next;
   i = -1;
   while (++i < pos)
     elem = elem->next;

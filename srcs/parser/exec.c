@@ -5,16 +5,13 @@
 ** Login   <juniqu_v@epitech.net>
 **
 ** Started on  Sat Jun  4 14:07:32 2016 virgile junique
-** Last update Sun Jun  5 16:33:25 2016 virgile junique
+** Last update Sun Jun  5 22:44:37 2016 virgile junique
 */
 
 #include "42sh.h"
 
 void		free_tree(t_node *tree)
 {
-
-  if (tree->data != NULL)
-    free(tree->data);
   if (tree->right != NULL)
     free_tree(tree->right);
   if (tree->left != NULL)
@@ -47,11 +44,12 @@ int		execute(t_node *tree, char **cmd, t_params *p)
     return (1);
   if ((tree->fd_in != 0) && (dup2(tree->fd_in, 0) == -1))
     return (1);
-  if ((path = my_access(cmd, p)) == NULL)
+  if (my_strncmp(cmd[0], "./", 2) == 0)
+    path = cmd[0];
+  else if ((path = my_access(cmd, p)) == NULL)
     {
-      my_error(cmd[0], 1);
+      my_error(cmd[0]);
       kill(getpid(), SIGKILL);
-      return (1);
     }
   if (execve(path, cmd, p->env_tab) == -1)
     return (2);
@@ -71,7 +69,7 @@ int		my_exec(t_node *tree, t_params *p, int last)
   if ((pid = fork()) == -1)
     return (1);
   if ((pid == 0) && ((state = execute(tree, cmd, p)) != 0))
-     return (state);
+      return (state);
   else
     {
       if (last)
@@ -81,7 +79,7 @@ int		my_exec(t_node *tree, t_params *p, int last)
       if (WIFEXITED(state))
 	return (WEXITSTATUS(state));
       else
-	return (0);
+	return (1);
     }
   return (2);
 }
@@ -99,6 +97,7 @@ int		start_exec(t_node *tree, t_params *p, int last)
       state = its_builtins(tree, p);
       if (state == -1)
 	state = my_exec(tree, p, last);
+      ret = state;
       set_state(p, state);
     }
   return (-1);

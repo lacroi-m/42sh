@@ -5,7 +5,7 @@
 ** Login   <juniqu_v@epitech.net>
 **
 ** Started on  Fri Jun  3 13:51:18 2016 virgile junique
-** Last update Sun Jun  5 16:15:58 2016 virgile junique
+** Last update Sun Jun  5 23:26:30 2016 virgile junique
 */
 
 #include "42sh.h"
@@ -63,8 +63,8 @@ int		my_loop(t_params *p)
 {
   char		*input;
   int		state;
-  t_node	*tree;
   char		***prio;
+  t_node	*tree;
 
   prio = NULL;
   prio = init_prio();
@@ -77,9 +77,9 @@ int		my_loop(t_params *p)
 	  tree = my_parse(input, prio);
 	  if ((state = start_exec(tree, p, 1)) >= 0)
 	    return (state);
-	  end_process(tree);
-	  free_tree(tree);
 	}
+      end_process(tree);
+      free_tree(tree);
       free(input);
     }
   return (-1);
