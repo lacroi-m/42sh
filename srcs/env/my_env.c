@@ -5,11 +5,10 @@
 ** Login   <juniqu_v@epitech.net>
 **
 ** Started on  Mon May  9 15:42:37 2016 virgile junique
-** Last update Tue May 31 10:48:20 2016 virgile junique
+** Last update Sun Jun  5 11:34:09 2016 virgile junique
 */
 
 #include "42sh.h"
-#include "my_env.h"
 
 int	count_list(t_env *list)
 {

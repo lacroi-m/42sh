@@ -5,7 +5,7 @@
 ** Login   <juniqu_v@epitech.net>
 **
 ** Started on  Mon May 23 21:17:57 2016 virgile junique
-** Last update Tue May 31 10:53:39 2016 virgile junique
+** Last update Sun Jun  5 15:48:47 2016 virgile junique
 */
 
 #include "my.h"
@@ -53,7 +53,7 @@ void	*xmalloc(int size)
   if (str == NULL)
     {
       my_putstr("Malloc error.\n", 2, -1);
-      exit(-1);
+      return ;
     }
   return (str);
 }

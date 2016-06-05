@@ -5,11 +5,10 @@
 ** Login   <juniqu_v@epitech.net>
 **
 ** Started on  Mon May  9 14:59:47 2016 virgile junique
-** Last update Mon May 23 22:56:48 2016 virgile junique
+** Last update Sun Jun  5 11:34:18 2016 virgile junique
 */
 
 #include "42sh.h"
-#include "my_env.h"
 
 t_env	*my_init_list(void)
 {

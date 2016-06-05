@@ -5,7 +5,7 @@
 ## Login   <juniqu_v@epitech.net>
 ## 
 ## Started on  Mon May  2 12:27:35 2016 virgile junique
-## Last update Tue May 31 10:45:18 2016 virgile junique
+## Last update Sun Jun  5 16:28:37 2016 virgile junique
 ##
 
 CC	= cc
@@ -21,16 +21,22 @@ LIB     = -lmy -L./lib/
 
 SRC	= $(addprefix srcs/, \
 	    main.c \
-	    my_env.c \
-	    my_list.c \
 	    my_init.c \
-	    my_exec.c \
-	    syntaxe.c \
+	    error.c \
+	    env/my_env.c \
+	    env/my_list.c \
 	    builtins/builtins.c \
 	    builtins/built_env.c \
 	    builtins/my_exit.c \
 	    builtins/my_cd.c \
-	    builtins/echo.c)
+	    builtins/echo.c \
+	    parser/init_exec.c \
+	    parser/exec.c \
+	    parser/separator.c \
+	    parser/separator2.c \
+	    parser/separator3.c \
+	    parser/sep_in_tab.c \
+	    parser/set_state.c)
 
 OBJ	= $(SRC:.c=.o)
 

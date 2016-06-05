@@ -5,13 +5,10 @@
 ** Login   <juniqu_v@epitech.net>
 **
 ** Started on  Tue May 31 10:36:55 2016 virgile junique
-** Last update Tue May 31 10:51:15 2016 virgile junique
+** Last update Sun Jun  5 11:33:50 2016 virgile junique
 */
 
 #include "42sh.h"
-#include "builtins.h"
-#include "my_env.h"
-#include "my.h"
 
 static int      refresh_old(char *old, t_env *env, t_params *p)
 {

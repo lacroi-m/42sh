@@ -5,7 +5,7 @@
 ** Login   <juniqu_v@epitech.net>
 **
 ** Started on  Mon May  2 12:21:16 2016 virgile junique
-** Last update Thu Jun  2 11:39:28 2016 Lemeh
+** Last update Sun Jun  5 11:47:50 2016 virgile junique
 */
 
 #ifndef _MY_H_
@@ -32,6 +32,7 @@ int	my_putstr(char *str, int fd, int value);
 int	my_strcmp(char *s1, char *s2);
 int	my_strncmp(char *s1, char *s2, int n);
 int	my_strlen(char *str);
+int	my_getnbr(char *str);
 char	*my_strcpy(char *dest, char *src);
 char	*my_strncpy(char *dest, char *src, int n);
 char	*check_slash(char *str);

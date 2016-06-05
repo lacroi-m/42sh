@@ -5,33 +5,32 @@
 ** Login   <da-sil_t@epitech.net>
 **
 ** Started on  Mon May 23 14:33:34 2016 theo da-silva
-** Last update Tue May 31 10:42:20 2016 virgile junique
+** Last update Sun Jun  5 11:52:40 2016 virgile junique
 */
 
 #include "42sh.h"
-#include "builtins.h"
 
-static int	my_chdir(char *str, t_params *p)
+static int	my_chdir(char **cmd, t_params *p)
 {
-  if ((my_strncmp(str, "-", 1)) == 0)
+  if ((my_strncmp(cmd[1], "-", 1)) == 0)
     return (my_old(p, p->env));
-  else if (str == NULL)
+  else if (cmd[1] == NULL)
     return (go_home(p, p->env));
   else
-    return (go_dir(str, p));
+    return (go_dir(cmd[1], p));
   return (0);
 }
 
-static int	my_history(char *str, t_params *p)
+static int	my_history(char **str, t_params *p)
 {
   (void)str;
   (void)p;
   return (0);
 }
 
-int	my_builtins(char *str, t_params *p, int pos)
+int	my_builtins(char **built, t_params *p, int pos)
 {
-  int	(*f[7])(char *str, t_params *p);
+  int	(*f[7])(char **built, t_params *p);
   int	r;
 
   f[0] = &my_chdir;
@@ -41,16 +40,20 @@ int	my_builtins(char *str, t_params *p, int pos)
   f[4] = &my_exit;
   f[5] = &my_echo;
   f[6] = &my_history;
-  r = f[pos](str, p);
+  r = f[pos](built, p);
+  my_free_ctab(built);
   return (r);
 }
 
-int	its_builtins(char *str)
+int	its_builtins(t_node *tree, t_params *p)
 {
   char  *tab[8];
   int	i;
+  char	**built;
 
-  i = 0;
+  i = -1;
+  if (!(built = my_str_to_wordtab(tree->data)))
+    return (2);
   tab[0] = "cd";
   tab[1] = "setenv";
   tab[2] = "unsetenv";
@@ -59,11 +62,10 @@ int	its_builtins(char *str)
   tab[5] = "echo";
   tab[6] = "history";
   tab[7] = NULL;
-  while (tab[i])
+  while (tab[++i])
     {
-      if (my_strcmp(str, tab[i]) == 0)
-	return (i);
-      i++;
+      if (my_strcmp(built[0], tab[i]) == 0)
+	return (my_builtins(built, p, i));
     }
   return (-1);
 }

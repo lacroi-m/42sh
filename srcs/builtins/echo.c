@@ -1,95 +1,114 @@
 /*
-** echo.c for 42sh in /home/meridj/Rendu/PSU_2015_42sh/srcs/
+** echo.c for echo in /home/juniqu_v/rendu/PSU_2015_42sh/srcs/builtins
 **
-** Made by Mehdi Meridja
-** Login   <meridj_m@meridj_m@epitech.eu>
+** Made by virgile junique
+** Login   <juniqu_v@epitech.net>
 **
-** Started on  Fri May  6 12:43:00 2016 Mehdi Meridja
-** Last update Wed Jun  1 14:39:01 2016 Mehdi Meridja
+** Started on  Sun Jun  5 11:54:09 2016 virgile junique
+** Last update Sun Jun  5 15:03:50 2016 virgile junique
 */
 
 #include "42sh.h"
-#include "builtins.h"
 
-int	cpt_quote(char *str)
+static int     print_var_env(char *str, int nul, int b)
 {
-  int	i;
-  int	nb;
-
-  i = -1;
-  nb = 0;
-  while (str[++i])
-    {
-      if (str[i] == '"')
-	nb++;
-    }
-  return (nb);
-}
-
-static char	*parsing_quote(char *str)
-{
-  char		*new;
   int		i;
 
-  new = xmalloc(sizeof(char) * (my_strlen(str) - cpt_quote(str)));
-  i = 0;
-  while (str[i] != 0)
+  i = -1;
+  while (str[++i] != '=');
+  if (nul == 0)
     {
-      if (str[i] != '"')
-	new[i] = str[i];
-      i++;
+      my_putstr(&str[i], 1, -1);
+      my_putchar(' ', 1);
     }
-  free(str);
-  return (new);
+  else
+    my_putstr(&str[i], 1, -1);
+  if (b == 0)
+    my_putchar('\n', 1);
+  return (0);
 }
 
-static void	with_bachslash_n(char **tab)
+static int     print_ret_env(char *str, int nul, int b)
 {
   int		i;
 
   i = 1;
-  while (tab[++i] != NULL)
+  if (nul == 0)
     {
-      if (tab[i + 1] != NULL)
-	printf("%s ", parsing_quote(tab[i]));
-      else
-	printf("%s", parsing_quote(tab[i]));
-    }
-  return ;
-}
-
-static void	no_option(char **tab)
-{
-  int		i;
-
-  i = 0;
-  while (tab[++i] != NULL)
-    {
-      if (tab[i + 1] != NULL)
-	printf("%s ", parsing_quote(tab[i]));
-      else
-	printf("%s", parsing_quote(tab[i]));
-    }
-  printf("\n");
-  return ;
-}
-
-int	my_echo(char *str, t_params *p)
-{
-  char	**tab;
-
-  (void)str;
-  tab = my_str_to_wordtab(p->prompt);
-  printf(parsing_quote(tab[1]));
-  if (tab[1])
-    {
-      if (strcmp("-n", tab[1]) == 0)
-	with_bachslash_n(tab);
-      else
-	no_option(tab);
+      my_putstr(&str[i], 1, -1);
+      my_putchar(' ', 1);
     }
   else
-    printf("\n");
-  my_free_ctab(tab);
+    my_putstr(&str[i], 1, -1);
+  if (b == 0)
+    my_putchar('\n', 1);
+  return (0);
+}
+
+static void    print_str(char *str, int nul, int b)
+{
+  if (nul == 0)
+    {
+      my_putstr(str, 1, -1);
+      my_putchar(' ', 1);
+    }
+  else
+    my_putstr(str, 1, -1);
+  if (b == 0)
+    my_putstr("\n", 1, -1);
+  return ;
+}
+
+static int     check_env(char *str, t_env *env, int nul, int b)
+{
+  t_env		*tmp;
+
+  tmp = env->next;
+  if (str[1] == '?')
+    {
+      while (tmp != env)
+        {
+          if (my_strncmp(tmp->line, "$", 1) == 0)
+            return (print_ret_env(tmp->line, nul, b));
+          tmp = tmp->next;
+        }
+    }
+  else
+    {
+      while (tmp != env)
+        {
+          if (my_strncmp(tmp->line, &str[1], my_strlen(str)) == 0)
+            return (print_var_env(tmp->line, nul, b));
+          tmp = tmp->next;
+        }
+    }
+  return (my_putstr("Not found in environement, sorry", 2, -1));
+}
+
+int		my_echo(char **tab, t_params *p)
+{
+  int		i;
+  int		nul;
+  int		b;
+
+  nul = 0;
+  b = 0;
+  i = 0;
+  if (!tab[1])
+    my_putstr("\n", 1, -1);
+  else
+    {
+      if ((my_strncmp(tab[1], "-n", 2)) == 0)
+        b = 1;
+      while (tab[++i] != NULL)
+        {
+          if (tab[i + 1] == NULL)
+            nul = 1;
+          if (tab[i][0] == '$' && tab[i][1] == '?')
+            check_env(tab[i], p->env, nul, b);
+          else
+            print_str(tab[i], nul, b);
+        }
+    }
   return (0);
 }

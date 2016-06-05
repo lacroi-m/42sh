@@ -5,10 +5,25 @@
 ** Login   <da-sil_t@epitech.net>
 **
 ** Started on  Mon May  2 13:44:52 2016 theo da-silva
-** Last update Thu Jun  2 11:41:09 2016 Lemeh
+** Last update Sun Jun  5 16:11:52 2016 virgile junique
 */
 
 #include "42sh.h"
+
+int		check_input(char *input)
+{
+  int		i;
+
+  i = - 1;
+  if (input == NULL)
+    return (0);
+  while (input[++i])
+    {
+      if (input[i] > ' ')
+	return (1);
+    }
+  return (0);
+}
 
 static void	my_catch(int i)
 {
@@ -32,7 +47,6 @@ void		my_init(t_params *p)
       fprintf(stdout, "SIGNAL ERROR\n");
       exit(-1);
     }
-  p->semi_len = 0;
-  p->prompt = NULL;
   p->path_tab = NULL;
+  p->env_tab = NULL;
 }
