@@ -5,7 +5,7 @@
 ** Login   <da-sil_t@epitech.net>
 **
 ** Started on  Mon May  2 16:39:13 2016 theo da-silva
-** Last update Sun Jun  5 23:35:27 2016 virgile junique
+** Last update Sun Jun  5 23:40:51 2016 virgile junique
 */
 
 #include "42sh.h"
@@ -21,6 +21,7 @@ int		my_exit(char **cmd, t_params *p)
   if (p->env_tab != NULL)
     my_free_ctab(p->env_tab);
   my_clear_list(&p->env);
+  my_putchar('\n', 1);
   if (cmd == NULL)
     exit(ret);
   if (cmd[1] != NULL && ((r = my_getnbr(cmd[1])) <= 0))
