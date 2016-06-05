@@ -1,0 +1,70 @@
+/*
+** main.c for  in /home/oudin_c/rendu/gnl
+**
+** Made by coudin
+** Login   <oudin_c@epitech.net>
+**
+** Started on  Tue May 31 11:36:42 2016 coudin
+** Last update Wed Jun  1 12:32:14 2016 coudin
+*/
+
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include "gnl.h"
+
+int		my_strlen(char *str)
+{
+  int		i;
+
+  i = 0;
+  while (str[i])
+    i++;
+  return (i);
+}
+
+void		my_putstr(char *str, int fd)
+{
+  write(fd, str, my_strlen(str));
+}
+
+void		cat_history()
+{
+  char		*nl;
+  int		i;
+
+  i = 0;
+  while ((nl = gnl(-1)))
+    {
+      dprintf(2, " %d ", i++);
+      my_putstr(nl, 1);
+      free(nl);
+    }
+}
+
+int		main()
+{
+  char		*nl;
+  int		i;
+
+  i = 0;
+  while (i < 3)
+    {
+      nl = gnl(0);
+      my_putstr(nl, 1);
+      free(nl);
+      i++;
+    }
+  cat_history();
+  i = 0;
+  while (i < 3)
+    {
+      nl = gnl(0);
+      my_putstr(nl, 1);
+      free(nl);
+      i++;
+    }
+  cat_history();
+  gnl(-2);
+  return (0);
+}
