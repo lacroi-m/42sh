@@ -5,7 +5,7 @@
 ** Login   <da-sil_t@epitech.net>
 **
 ** Started on  Mon May  2 13:44:52 2016 theo da-silva
-** Last update Sun Jun  5 23:30:30 2016 virgile junique
+** Last update Wed Jun  8 15:40:03 2016 Lacroix Maxime
 */
 
 #include "42sh.h"
@@ -34,7 +34,7 @@ static void	my_catch(int i)
 static void	my_put_segv(int i)
 {
   (void)i;
-  my_putchar('\n', 1);
+  my_putstr("Segmentation fault\n", 1, 0);
   exit(ret);
 }
 
